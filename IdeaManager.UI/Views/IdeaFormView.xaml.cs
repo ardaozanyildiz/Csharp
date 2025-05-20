@@ -13,7 +13,7 @@ namespace IdeaManager.UI.Views
             InitializeComponent();
         }
 
-        private async void SubmitButton_Click(object sender, RoutedEventArgs e)
+        private async void ButtonSubmit(object sender, RoutedEventArgs e)
         {
 
             var idea = new Idea
@@ -28,20 +28,13 @@ namespace IdeaManager.UI.Views
             {
                 await svc.SubmitIdeaAsync(idea);
 
-                MessageBox.Show("Idée enregistrée !",
-                                "Succès",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Information);
-
+                MessageBox.Show("Enregistrée !", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
                 TitleTextBox.Text = string.Empty;
                 DescriptionTextBox.Text = string.Empty;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erreur : {ex.Message}",
-                                "Erreur",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Error);
+                MessageBox.Show($"Erreur : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

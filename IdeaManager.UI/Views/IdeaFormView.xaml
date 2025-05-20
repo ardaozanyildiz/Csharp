@@ -13,6 +13,6 @@
         <TextBlock Text="Description :" TextAlignment="Center" Margin="0,15,0,0"/>
         <TextBox x:Name="DescriptionTextBox" AcceptsReturn="True" Height="80" Margin="0,5,0,0"/>
 
-        <Button Content="Envoyer" Margin="0,20,0,0" Height="40" Click="SubmitButton_Click"/>
+        <Button Content="Envoyer" Margin="0,20,0,0" Height="40" Click="ButtonSubmit"/>
     </StackPanel>
 </Page>
