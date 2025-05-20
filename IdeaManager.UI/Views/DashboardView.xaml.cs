@@ -15,14 +15,23 @@ using System.Windows.Shapes;
 
 namespace IdeaManager.UI.Views
 {
-    /// <summary>
-    /// Logique d'interaction pour DashboardView.xaml
-    /// </summary>
+
     public partial class DashboardView : Page
     {
         public DashboardView()
         {
             InitializeComponent();
+        }
+
+        private void NavigToForm(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new IdeaFormView());
+        }
+
+
+        private void NavigToList(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new IdeaListView());
         }
     }
 }

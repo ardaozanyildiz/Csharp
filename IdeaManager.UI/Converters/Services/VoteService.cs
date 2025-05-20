@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IdeaManager.UI.Navigation
+namespace IdeaManager.Services.Services
 {
-    internal class NavigationService
+    internal class VoteService
     {
     }
 }

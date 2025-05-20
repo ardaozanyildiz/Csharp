@@ -1,28 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using IdeaManager.Core.Entities;
+using IdeaManager.Core.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace IdeaManager.UI.Views
 {
-    /// <summary>
-    /// Logique d'interaction pour IdeaFormView.xaml
-    /// </summary>
     public partial class IdeaFormView : Page
     {
         public IdeaFormView()
         {
             InitializeComponent();
+        }
+
+        private async void SubmitButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            var idea = new Idea
+            {
+                Title = TitleTextBox.Text,
+                Description = DescriptionTextBox.Text
+            };
+
+            var svc = App.ServiceProvider.GetRequiredService<IIdeaService>();
+
+            try
+            {
+                await svc.SubmitIdeaAsync(idea);
+
+                MessageBox.Show("Idée enregistrée !",
+                                "Succès",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+
+                TitleTextBox.Text = string.Empty;
+                DescriptionTextBox.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur : {ex.Message}",
+                                "Erreur",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+            }
         }
     }
 }

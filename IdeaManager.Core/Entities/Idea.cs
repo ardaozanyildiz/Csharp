@@ -10,7 +10,7 @@ public class Idea
 
     public string Description { get; set; } = string.Empty;
 
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
 
     public IdeaStatus Status { get; set; } = IdeaStatus.Pending;  // Enum IdeaStatus
 
